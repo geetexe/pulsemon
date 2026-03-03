@@ -1,0 +1,12 @@
+{
+  "name": "pulsemon",
+  "version": "1.0.0",
+  "main": "pulsemon.js",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "emttr": "^1.0.0"
+  }
+}

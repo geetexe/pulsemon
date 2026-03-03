@@ -1,12 +1,29 @@
 {
   "name": "pulsemon",
   "version": "1.0.0",
-  "main": "pulsemon.js",
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "description": "A lightweight network connection monitor that reliably detects online/offline status",
   "type": "module",
+  "main": "./pulsemon.js",
+  "module": "./pulsemon.js",
+  "exports": {
+    ".": "./pulsemon.js"
+  },
+  "files": ["pulsemon.js", "ping.json", "README.md", "LICENSE"],
+  "keywords": ["network", "monitor", "online", "offline", "polling", "connectivity", "javascript"],
+  "author": {
+    "name": "Geet Trivedi",
+    "url": "https://www.geettrivedi.com"
+  },
+  "license": "MIT",
   "dependencies": {
     "emttr": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geetexe/pulsemon.git"
+  },
+  "homepage": "https://github.com/geetexe/pulsemon#readme",
+  "engines": {
+    "node": ">=14.0.0"
   }
 }

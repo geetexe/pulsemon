@@ -16,10 +16,16 @@ npm install pulsemon
 
 ## Setup
 
-Create a `ping.json` file in your public/assets folder. The contents don't matter, pulsemon only checks if the request resolves:
+A `ping.json` file is included in the package. Copy it to your public/assets folder:
 
-```json
-{}
+```bash
+cp node_modules/pulsemon/ping.json public/ping.json
+```
+
+Or point to any existing static file on your server instead:
+
+```javascript
+const pulsemon = new Pulsemon({ url: '/any-existing-file.json' });
 ```
 
 ---

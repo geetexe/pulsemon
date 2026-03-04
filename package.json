@@ -1,6 +1,6 @@
 {
   "name": "pulsemon",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight network connection monitor that reliably detects online/offline status",
   "type": "module",
   "main": "./pulsemon.js",
@@ -8,8 +8,21 @@
   "exports": {
     ".": "./pulsemon.js"
   },
-  "files": ["pulsemon.js", "ping.json", "README.md", "LICENSE"],
-  "keywords": ["network", "monitor", "online", "offline", "polling", "connectivity", "javascript"],
+  "files": [
+    "pulsemon.js",
+    "ping.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "network",
+    "monitor",
+    "online",
+    "offline",
+    "polling",
+    "connectivity",
+    "javascript"
+  ],
   "author": {
     "name": "Geet Trivedi",
     "url": "https://www.geettrivedi.com"

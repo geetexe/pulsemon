@@ -41,22 +41,30 @@ class Pulsemon {
 
     init(){
         this._event = new Emttr();
+        const t0 = performance.now();
         this.#poll().then(isOnline => {
             if(isOnline === null) return;
-            this.#isOnline = isOnline;
-            this._event.publish(EVENTS.NETWORK, {
-                isOnline: this.#isOnline
-            });
+            const latency = `${((performance.now() - t0)/1000).toFixed(2)} s`;
+            this.#publish(isOnline, latency);
         });
         this.#interval = setInterval(async () => {
+            const t0 = performance.now();
             const result = await this.#poll();
             if(result === null) return;
-            this.#isOnline = result;
-            this._event.publish(EVENTS.NETWORK, {
-                isOnline: this.#isOnline
-            });
+            const latency = `${((performance.now() - t0)/1000).toFixed(2)} s`;
+            this.#publish(result, latency);
         }, this.#intervalDuration);
         return this._event;
+    }
+
+    #publish(isOnline, latency) {
+        this.#isOnline = isOnline;
+        this._event.publish(EVENTS.NETWORK, {
+            isOnline: this.#isOnline,
+            latency,
+            status: isOnline ? NETWORK_STATUS.ONLINE : NETWORK_STATUS.OFFLINE,
+            timestamp: new Date().toISOString()
+        });
     }
 
     stop(){

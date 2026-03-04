@@ -1,6 +1,6 @@
 {
   "name": "pulsemon",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A lightweight network connection monitor that reliably detects online/offline status",
   "type": "module",
   "main": "./pulsemon.js",

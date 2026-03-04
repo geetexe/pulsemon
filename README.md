@@ -42,8 +42,10 @@ const pulsemon = new Pulsemon({
 
 const network$ = pulsemon.init();
 
-network$.subscribe(EVENTS.NETWORK, ({ isOnline }) => {
-  console.log(isOnline ? 'Back online' : 'Gone offline');
+network$.subscribe(EVENTS.NETWORK, ({ isOnline, latency, status, timestamp }) => {
+  console.log(status);    // 'ONLINE' | 'OFFLINE'
+  console.log(latency);   // '0.12 s'
+  console.log(timestamp); // '2026-03-04T10:32:05.123Z'
 });
 
 // Get current status at any time
@@ -52,6 +54,19 @@ console.log(pulsemon.networkStatus()); // 'ONLINE' | 'OFFLINE' | 'CHECKING'
 // Stop polling when done
 pulsemon.stop();
 ```
+
+---
+
+## Event Payload
+
+Every network event publishes the following object:
+
+| Field | Type | Description |
+|---|---|---|
+| `isOnline` | `boolean` | Whether the network is reachable |
+| `status` | `string` | `'ONLINE'` or `'OFFLINE'` |
+| `latency` | `string` | Time taken for the poll to resolve, e.g. `'0.12 s'` |
+| `timestamp` | `string` | ISO timestamp of when the poll resolved |
 
 ---
 
@@ -113,13 +128,13 @@ const pulsemon = new Pulsemon({ url: '/ping.json' });
 
 const network$ = pulsemon.init();
 
-network$.subscribe(EVENTS.NETWORK, ({ isOnline }) => {
-  bus.publish('networkChanged', { isOnline });
+network$.subscribe(EVENTS.NETWORK, ({ isOnline, status, latency, timestamp }) => {
+  bus.publish('networkChanged', { isOnline, status, latency, timestamp });
 });
 
 // Anywhere in your app
-bus.subscribe('networkChanged', ({ isOnline }) => {
-  console.log('Network status:', isOnline);
+bus.subscribe('networkChanged', ({ status, latency }) => {
+  console.log(`${status} · ${latency}`);
 });
 ```
 

@@ -4,6 +4,10 @@ A lightweight network connection monitor for vanilla JavaScript. Polls a URL at 
 
 Built on top of [emttr](https://www.npmjs.com/package/emttr).
 
+![npm](https://img.shields.io/npm/v/pulsemon)
+![bundle size](https://img.shields.io/badge/gzip-862B-brightgreen)
+![license](https://img.shields.io/npm/l/pulsemon)
+
 ---
 
 ## Installation
